@@ -1,0 +1,11 @@
+= Limit as reserved word =
+This is a sample application to demonstrate the exception that is thrown when on try to create a mapper
+model class using 'limit' as one of it's attributes.
+
+== About the app ==
+* scala 2.9.1
+* lift 2.4
+* sbt 0.11.2
+
+== How to reproduce the issue ==
+Just comment line 26 on Boot.scala and try to start the container
