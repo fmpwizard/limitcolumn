@@ -1,0 +1,93 @@
+<html>
+<head>
+    <title>Test</title>
+</head>
+<body>
+<p>
+    This is a test application to show that when one try to create a mapper model attribute called limit,
+    using postgresql, an exception is thrown.
+</p>
+<p>
+    This happens because 'limit' is a reserved work on postgresql.
+</p>
+
+<pre>
+    org.postgresql.util.PSQLException: ERROR: syntax error at or near "limit"
+  Position: 23
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2103) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:1836) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:257) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:512) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.executeWithFlags(AbstractJdbc2Statement.java:374) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at org.postgresql.jdbc2.AbstractJdbc2Statement.execute(AbstractJdbc2Statement.java:366) ~[postgresql-9.1-901-1.jdbc4.jar:na]
+	at net.liftweb.mapper.Schemifier$.net$liftweb$mapper$Schemifier$$maybeWrite(Schemifier.scala:208) ~[lift-mapper_2.9.1-2.4.jar:2.4]
+	at net.liftweb.mapper.Schemifier$.net$liftweb$mapper$Schemifier$$ensureTable(Schemifier.scala:219) ~[lift-mapper_2.9.1-2.4.jar:2.4]
+	at net.liftweb.mapper.Schemifier$$anonfun$schemify$1$$anonfun$1.apply(Schemifier.scala:117) ~[lift-mapper_2.9.1-2.4.jar:2.4]
+	at net.liftweb.mapper.Schemifier$$anonfun$schemify$1$$anonfun$1.apply(Schemifier.scala:117) ~[lift-mapper_2.9.1-2.4.jar:2.4]
+	at scala.collection.LinearSeqOptimized$class.foldLeft(LinearSeqOptimized.scala:111) ~[scala-library.jar:0.11.3-2]
+	at scala.collection.immutable.List.foldLeft(List.scala:45) ~[scala-library.jar:0.11.3-2]
+	at net.liftweb.mapper.Schemifier$$anonfun$schemify$1.apply(Schemifier.scala:117) ~[lift-mapper_2.9.1-2.4.jar:2.4]
+	at net.liftweb.mapper.Schemifier$$anonfun$schemify$1.apply(Schemifier.scala:91) ~[lift-mapper_2.9.1-2.4.jar:2.4]
+	at net.liftweb.db.DB$$anonfun$use$1.apply(DB.scala:670) ~[lift-db_2.9.1-2.4.jar:2.4]
+	at net.liftweb.util.DynoVar$class.run(ThreadGlobal.scala:95) ~[lift-util_2.9.1-2.4.jar:2.4]
+	at net.liftweb.db.DB$class.use(DB.scala:667) ~[lift-db_2.9.1-2.4.jar:2.4]
+	at net.liftweb.db.DB$$anon$1.use(DB.scala:38) ~[lift-db_2.9.1-2.4.jar:2.4]
+	at net.liftweb.mapper.Schemifier$.schemify(Schemifier.scala:54) ~[lift-mapper_2.9.1-2.4.jar:2.4]
+	at bootstrap.liftweb.Boot.boot(Boot.scala:27) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.7.0_05]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57) ~[na:1.7.0_05]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.7.0_05]
+	at java.lang.reflect.Method.invoke(Method.java:601) ~[na:1.7.0_05]
+	at net.liftweb.util.ClassHelpers$$anonfun$createInvoker$1.apply(ClassHelpers.scala:361) ~[lift-util_2.9.1-2.4.jar:2.4]
+	at net.liftweb.util.ClassHelpers$$anonfun$createInvoker$1.apply(ClassHelpers.scala:359) ~[lift-util_2.9.1-2.4.jar:2.4]
+	at net.liftweb.http.DefaultBootstrap$$anonfun$boot$1.apply(LiftRules.scala:1848) ~[lift-webkit_2.9.1-2.4.jar:2.4]
+	at net.liftweb.http.DefaultBootstrap$$anonfun$boot$1.apply(LiftRules.scala:1848) ~[lift-webkit_2.9.1-2.4.jar:2.4]
+	at net.liftweb.common.Full.map(Box.scala:491) ~[lift-common_2.9.1-2.4.jar:2.4]
+	at net.liftweb.http.DefaultBootstrap$.boot(LiftRules.scala:1848) ~[lift-webkit_2.9.1-2.4.jar:2.4]
+	at net.liftweb.http.provider.HTTPProvider$class.bootLift(HTTPProvider.scala:88) ~[lift-webkit_2.9.1-2.4.jar:2.4]
+	at net.liftweb.http.LiftFilter.bootLift(LiftServlet.scala:757) [lift-webkit_2.9.1-2.4.jar:2.4]
+	at net.liftweb.http.provider.servlet.ServletFilterProvider$class.init(ServletFilterProvider.scala:40) [lift-webkit_2.9.1-2.4.jar:2.4]
+	at net.liftweb.http.LiftFilter.init(LiftServlet.scala:757) [lift-webkit_2.9.1-2.4.jar:2.4]
+	at org.eclipse.jetty.servlet.FilterHolder.doStart(FilterHolder.java:114) [jetty-servlet-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:59) [jetty-util-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.servlet.ServletHandler.initialize(ServletHandler.java:756) [jetty-servlet-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:255) [jetty-servlet-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1212) [jetty-webapp-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:610) [jetty-server-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:453) [jetty-webapp-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:59) [jetty-util-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.server.handler.HandlerCollection.doStart(HandlerCollection.java:224) [jetty-server-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:167) [jetty-server-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:59) [jetty-util-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:89) [jetty-server-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:262) [jetty-server-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:59) [jetty-util-8.0.4.v20111024.jar:8.0.4.v20111024]
+	at com.github.siasia.Jetty7Runner.start(JettyRunner.scala:95) [xsbt-web-plugin_2.9.1-0.11.2-0.2.11.jar:0.11.2-0.2.11]
+	at com.github.siasia.Container$$anonfun$containerSettings$7.apply(Container.scala:65) [xsbt-web-plugin_2.9.1-0.11.2-0.2.11.jar:0.11.2-0.2.11]
+	at com.github.siasia.Container$$anonfun$containerSettings$7.apply(Container.scala:59) [xsbt-web-plugin_2.9.1-0.11.2-0.2.11.jar:0.11.2-0.2.11]
+	at sbt.Scoped$$anonfun$hf7$1.apply(Structure.scala:478) [main_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.Scoped$$anonfun$hf7$1.apply(Structure.scala:478) [main_2.9.1-0.11.2.jar:0.11.2]
+	at scala.Function1$$anonfun$compose$1.apply(Function1.scala:41) [scala-library.jar:0.11.3-2]
+	at sbt.Scoped$Reduced$$anonfun$combine$1$$anonfun$apply$11.apply(Structure.scala:295) [main_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.Scoped$Reduced$$anonfun$combine$1$$anonfun$apply$11.apply(Structure.scala:295) [main_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.$tilde$greater$$anonfun$$u2219$1.apply(TypeFunctions.scala:40) [collections_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.std.Transform$$anon$5.work(System.scala:67) [task-system_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:221) [tasks_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.Execute$$anonfun$submit$1$$anonfun$apply$1.apply(Execute.scala:221) [tasks_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.ErrorHandling$.wideConvert(ErrorHandling.scala:18) [control_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.Execute.work(Execute.scala:227) [tasks_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:221) [tasks_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.Execute$$anonfun$submit$1.apply(Execute.scala:221) [tasks_2.9.1-0.11.2.jar:0.11.2]
+	at sbt.CompletionService$$anon$1$$anon$2.call(CompletionService.scala:26) [tasks_2.9.1-0.11.2.jar:0.11.2]
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334) [na:1.7.0_05]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166) [na:1.7.0_05]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471) [na:1.7.0_05]
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:334) [na:1.7.0_05]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:166) [na:1.7.0_05]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110) [na:1.7.0_05]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603) [na:1.7.0_05]
+	at java.lang.Thread.run(Thread.java:722) [na:1.7.0_05]
+
+</pre>
+</body>
+</html>
